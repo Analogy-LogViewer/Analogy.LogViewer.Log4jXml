@@ -1,5 +1,4 @@
 ﻿using System;
-using JetBrains.Annotations;
 using Logazmic.Core.Log;
 
 namespace Logazmic.Core.Readers.Parsers
@@ -9,7 +8,7 @@ namespace Logazmic.Core.Readers.Parsers
         /// <summary>
         /// Parse LOG4JXml from string and return default LogMessage on exception
         /// </summary>
-        [NotNull]
+      
         public static LogMessage TryParseLogEvent(this ILogParser logParser, string logEvent, string defaultLogger)
         {
             try
