@@ -1,7 +1,7 @@
 # Analogy.LogViewer.Log4jXml
 Analogy Parser for Log4jXml layouts
 
-This project is based on based on [Logazmic](https://github.com/ihtfw/Logazmic)
+This project is  on based on great project [Logazmic](https://github.com/ihtfw/Logazmic)
 
 This is POC project.
 For example:
