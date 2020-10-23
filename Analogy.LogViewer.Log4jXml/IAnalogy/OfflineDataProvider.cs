@@ -38,6 +38,7 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
                 {
                     AnalogyLogMessage m = new AnalogyLogMessage(log.Message, GetLogLevel(log.LogLevel), AnalogyLogClass.General,
                         log.CallSiteClass, "", "", "", 0, 0, null, "", log.CallSiteMethod, log.SourceFileName, (int)log.SourceFileLineNr);
+                    FillProperties(m, log);
                     newMessages.Add(m);
                 }
                 messages.AddRange(newMessages);
@@ -81,6 +82,28 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
             {
                 fileReceiver.NewMessage -= FileReceiverNewMessage;
                 fileReceiver.NewMessages -= FileReceiverNewMessages;
+            }
+        }
+
+        private static void FillProperties(AnalogyLogMessage m, LogMessage log)
+        {
+            m.Date = log.TimeStamp;
+            m.Source = log.LoggerName;
+            foreach (KeyValuePair<string, string> prop in log.Properties)
+            {
+                switch (prop.Key)
+                {
+                    case "log4japp":
+                        m.Module = prop.Value;
+                        continue;
+                    case "log4net:UserName":
+                        m.User = prop.Value;
+                        continue;
+                    case "log4net:HostName":
+                    case "log4jmachinename":
+                        m.MachineName = prop.Value;
+                        continue;
+                }
             }
         }
 
