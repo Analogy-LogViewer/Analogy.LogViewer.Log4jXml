@@ -14,8 +14,8 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
         public override IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = ChangeLogList.GetChangeLog();
         public override IEnumerable<string> Contributors { get; set; } = new List<string> { "Lior Banai" };
         public override string About { get; set; } = "Analogy Log Parser for Log4jXml";
-        public override Image? SmallImage { get; set; } = null;
-        public override Image? LargeImage { get; set; } = null;
+        public override Image? SmallImage { get; set; } = Resources.Logazmic16x16;
+        public override Image? LargeImage { get; set; } = Resources.Logazmic32x32;
 
 
     }
