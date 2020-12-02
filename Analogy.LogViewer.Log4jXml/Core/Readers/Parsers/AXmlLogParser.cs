@@ -19,7 +19,9 @@ namespace Logazmic.Core.Readers.Parsers
         public LogMessage ParseLogEvent(string logEvent)
         {
             using (var reader = new XmlTextReader(logEvent, XmlNodeType.Element, GetXmlParserContext()))
+            {
                 return ParseLogEvent(reader);
+            }
         }
 
         protected abstract LogMessage ParseLogEvent(XmlReader xmlTextReader);
@@ -30,7 +32,9 @@ namespace Logazmic.Core.Readers.Parsers
         {
             var startIndex = text.IndexOf(_openEventTag, StringComparison.InvariantCulture);
             if (startIndex < 0)
+            {
                 yield break;
+            }
 
             var endIndex = text.IndexOf(_closeEventTag, startIndex, StringComparison.InvariantCulture);
 
@@ -48,7 +52,9 @@ namespace Logazmic.Core.Readers.Parsers
 
                 startIndex = text.IndexOf(_openEventTag, startIndex + length, StringComparison.InvariantCulture);
                 if (startIndex < 0)
+                {
                     yield break;
+                }
 
                 endIndex = text.IndexOf(_closeEventTag, startIndex, StringComparison.InvariantCulture);
             }

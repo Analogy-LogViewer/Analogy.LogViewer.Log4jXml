@@ -35,15 +35,22 @@ namespace Logazmic.Core.Readers.Parsers
         {
             var indexOfOpenBracket = logEvent.IndexOf(" [", StringComparison.InvariantCultureIgnoreCase);
             if (indexOfOpenBracket < 1)
+            {
                 return null;
+            }
 
             var indexOfCloseBracket = logEvent.IndexOf("] ", indexOfOpenBracket, StringComparison.InvariantCultureIgnoreCase);
             if (indexOfCloseBracket < 1)
+            {
                 return null;
+            }
 
             var logLevelRaw = logEvent.Substring(indexOfOpenBracket + 2, indexOfCloseBracket - indexOfOpenBracket - 2);
             LogLevel logLevel = TryParseLogLevel(logLevelRaw);
-            if (logLevel == LogLevel.None) return null;
+            if (logLevel == LogLevel.None)
+            {
+                return null;
+            }
 
             var timestampRaw = logEvent.Substring(0, indexOfOpenBracket);
             if (!DateTime.TryParseExact(timestampRaw, "yyyy-MM-dd HH:mm:ss.fff zzz", CultureInfo.InvariantCulture, DateTimeStyles.None, out var timestamp))
@@ -91,7 +98,9 @@ namespace Logazmic.Core.Readers.Parsers
         public IEnumerable<LogEventParseItem> SplitToLogEventParseItems(string text)
         {
             if (string.IsNullOrEmpty(text))
+            {
                 yield break;
+            }
 
             var start = 0;
             for (int i = 0; i < text.Length; i++)

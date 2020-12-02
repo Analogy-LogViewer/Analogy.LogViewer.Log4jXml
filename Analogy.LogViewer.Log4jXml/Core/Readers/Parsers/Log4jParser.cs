@@ -49,8 +49,10 @@ namespace Logazmic.Core.Readers.Parsers
             var moveResult = reader.MoveToContent();
 
             if ((moveResult != XmlNodeType.Element) || (reader.Name != "log4j:event"))
+            {
                 throw new Exception("The Log Event is not a valid log4j Xml block.");
-            
+            }
+
             // we are on event element - extract known attributes
             var logMsg = new LogMessage
             {
@@ -60,8 +62,10 @@ namespace Logazmic.Core.Readers.Parsers
             };
             
             if (long.TryParse(reader.GetAttribute("timestamp"), out var timeStamp))
+            {
                 logMsg.TimeStamp = ToDateTime(timeStamp);
-            
+            }
+
             int eventDepth = reader.Depth;
             reader.Read();
             while (reader.Depth > eventDepth)
@@ -83,12 +87,18 @@ namespace Logazmic.Core.Readers.Parsers
                             logMsg.CallSiteMethod = reader.GetAttribute("method");
                             logMsg.SourceFileName = reader.GetAttribute("file");
                             if (uint.TryParse(reader.GetAttribute("line"), out var sourceFileLine))
+                            {
                                 logMsg.SourceFileLineNr = sourceFileLine;
+                            }
+
                             break;
 
                         case "nlog:eventSequenceNumber":
                             if (ulong.TryParse(reader.ReadString(), out var sequenceNumber))
+                            {
                                 logMsg.SequenceNr = sequenceNumber;
+                            }
+
                             break;
 
                         case "nlog:locationInfo":

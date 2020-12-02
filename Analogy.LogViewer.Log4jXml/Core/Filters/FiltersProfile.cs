@@ -55,7 +55,9 @@ namespace Logazmic.Core.Filters
         public void Apply(FiltersProfile other)
         {
             if (other == null)
+            {
                 return;
+            }
 
             Name = other.Name;
             MinLogLevel = other.MinLogLevel;

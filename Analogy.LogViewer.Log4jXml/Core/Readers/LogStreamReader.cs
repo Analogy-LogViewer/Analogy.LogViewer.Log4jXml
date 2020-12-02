@@ -41,7 +41,9 @@ namespace Logazmic.Core.Readers
             
             bytesRead = stream.Read(_buffer, 0, _buffer.Length);
             if (bytesRead == 0)
+            {
                 return Enumerable.Empty<LogMessage>();
+            }
 
             var text = Encoding.UTF8.GetString(_buffer, 0, bytesRead);
             if (!string.IsNullOrEmpty(_tail))

@@ -105,7 +105,9 @@ namespace Logazmic.Core.Receiver
             {
                 var nextLogEvents = _logStreamReader.NextLogEvents(_fileReader.BaseStream, out bytesRead).ToList();
                 if (nextLogEvents.Any())
+                {
                     OnNewMessages(nextLogEvents);
+                }
 
                 // Update the last file length
                 _lastFileLength = _fileReader.BaseStream.Position;

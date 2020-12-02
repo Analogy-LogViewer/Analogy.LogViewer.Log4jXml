@@ -22,7 +22,10 @@ namespace Logazmic.Core.Receiver
 
         protected override void DoInitialize()
         {
-            if (_server != null) return;
+            if (_server != null)
+            {
+                return;
+            }
 
             _server = new Socket(IpV6 ? AddressFamily.InterNetworkV6 : AddressFamily.InterNetwork, SocketType.Stream,
                 ProtocolType.Tcp);
@@ -44,7 +47,10 @@ namespace Logazmic.Core.Receiver
 
         void AcceptAsyncCompleted(object sender, SocketAsyncEventArgs e)
         {
-            if (_server == null || e.SocketError != SocketError.Success) return;
+            if (_server == null || e.SocketError != SocketError.Success)
+            {
+                return;
+            }
 
             //This is original from Log2Console source
             new Thread(Start) { IsBackground = true }.Start(e.AcceptSocket);
@@ -88,7 +94,10 @@ namespace Logazmic.Core.Receiver
 
         public override void Terminate()
         {
-            if (_server == null) return;
+            if (_server == null)
+            {
+                return;
+            }
 
             _server.Close();
             _server = null;
