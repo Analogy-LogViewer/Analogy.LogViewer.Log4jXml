@@ -6,11 +6,17 @@ namespace Logazmic.Core.Log
     public enum LogLevel
     {
         None = -1,
+        Verbose,
         Trace,
         Debug,
         Info,
+        Notice,
         Warn,
         Error,
-        Fatal
+        Severe,
+        Critical,
+        Alert,
+        Fatal,
+        Emergency
     }
 }

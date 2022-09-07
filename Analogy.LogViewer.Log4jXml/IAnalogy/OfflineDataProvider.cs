@@ -16,8 +16,8 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
         public override Image? SmallImage { get; set; } = null;
         public override Image? LargeImage { get; set; } = null;
         public override string? OptionalTitle { get; set; } = "Log4jXml Parser";
-        public override string FileOpenDialogFilters { get; set; } = "Nlog log4jxml|*.log4jxml;*.log4j|Flat|*.log";
-        public override IEnumerable<string> SupportFormats { get; set; } = new List<string> { "*.log4jxml", "*.log" };
+        public override string FileOpenDialogFilters { get; set; } = "log4jxml|*.log4jxml;*.log4j;*.xml;*.xml.*|Flat|*.log";
+        public override IEnumerable<string> SupportFormats { get; set; } = new List<string> { "*.log4jxml", "*.log" , "*.xml"  , "*.xml.*" };
         public override string? InitialFolderFullPath { get; set; } = null;
         public override Guid Id { get; set; } = new Guid("f17bf58c-01b7-49b7-9515-cf642fc021ac");
         private readonly ILogReaderFactory _logReaderFactory;
@@ -52,11 +52,18 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
                 messages.Add(m);
                 messagesHandler.AppendMessage(m, fileName);
             }
+            //supporting rolling files like *.xml.1, *.xml.2 ... *.xml.n
+            string extension = Path.GetExtension(fileName);
+            if (int.TryParse(extension.Substring(1), out _))
+            {
+                extension = Path.GetExtension(fileName.Substring(0, fileName.Length - extension.Length));
+            }
+
             var fileReceiver = new FileReceiver
             {
                 LogReaderFactory = _logReaderFactory,
                 FileToWatch = fileName,
-                LogFormat = _logReaderFactory.GetLogFormatByFileExtension(Path.GetExtension(fileName))
+                LogFormat = _logReaderFactory.GetLogFormatByFileExtension(extension)
             };
 
             try
@@ -89,6 +96,9 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
         {
             m.Date = log.TimeStamp;
             m.Source = log.LoggerName;
+            if (m.AdditionalInformation == null)
+                m.AdditionalInformation = new Dictionary<string, string>();
+            m.AdditionalInformation.Add("Original level", log.LogLevel.ToString());
             foreach (KeyValuePair<string, string> prop in log.Properties)
             {
                 switch (prop.Key)
@@ -115,16 +125,22 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
                 case LogLevel.None:
                     return AnalogyLogLevel.None;
                 case LogLevel.Trace:
+                case LogLevel.Verbose:
                     return AnalogyLogLevel.Trace;
                 case LogLevel.Debug:
                     return AnalogyLogLevel.Debug;
                 case LogLevel.Info:
+                case LogLevel.Notice:
                     return AnalogyLogLevel.Information;
                 case LogLevel.Warn:
                     return AnalogyLogLevel.Warning;
                 case LogLevel.Error:
+                case LogLevel.Severe:
                     return AnalogyLogLevel.Error;
+                case LogLevel.Critical:
                 case LogLevel.Fatal:
+                case LogLevel.Alert:
+                case LogLevel.Emergency:
                     return AnalogyLogLevel.Critical;
                 default:
                     return AnalogyLogLevel.Unknown;
