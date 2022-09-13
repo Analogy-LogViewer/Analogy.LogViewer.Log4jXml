@@ -30,6 +30,7 @@ namespace Logazmic.Core.Readers
                 case ".4JXML":
                 case ".LOG4JXML":
                 case ".LOG4J":
+                case ".XML":
                     return LogFormats.Log4J;
                 default:
                     return LogFormats.Flat;
