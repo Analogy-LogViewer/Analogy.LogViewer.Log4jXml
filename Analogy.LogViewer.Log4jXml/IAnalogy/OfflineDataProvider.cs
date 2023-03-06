@@ -27,17 +27,17 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
         {
             _logReaderFactory = new LogReaderFactory();
         }
-        public override async Task<IEnumerable<AnalogyLogMessage>> Process(string fileName, CancellationToken token,
+        public override async Task<IEnumerable<IAnalogyLogMessage>> Process(string fileName, CancellationToken token,
             ILogMessageCreatedHandler messagesHandler)
         {
-            List<AnalogyLogMessage> messages = new List<AnalogyLogMessage>();
+            List<IAnalogyLogMessage> messages = new List<IAnalogyLogMessage>();
             void FileReceiverNewMessages(object sender, IReadOnlyCollection<Logazmic.Core.Log.LogMessage> e)
             {
-                var newMessages = new List<AnalogyLogMessage>();
+                var newMessages = new List<IAnalogyLogMessage>();
                 foreach (LogMessage log in e)
                 {
                     AnalogyLogMessage m = new AnalogyLogMessage(log.Message, GetLogLevel(log.LogLevel), AnalogyLogClass.General,
-                        log.CallSiteClass, "", "", "", 0, 0, null, "", log.CallSiteMethod, log.SourceFileName, (int)log.SourceFileLineNr);
+                        log.CallSiteClass, "", "", 0, 0, null, "", log.CallSiteMethod, log.SourceFileName, (int)log.SourceFileLineNr);
                     FillProperties(m, log);
                     newMessages.Add(m);
                 }
@@ -48,7 +48,7 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
             void FileReceiverNewMessage(object sender, Logazmic.Core.Log.LogMessage log)
             {
                 AnalogyLogMessage m = new AnalogyLogMessage(log.Message, GetLogLevel(log.LogLevel), AnalogyLogClass.General,
-                        log.CallSiteClass, "", "", "", 0, 0, null, "", log.CallSiteMethod, log.SourceFileName, (int)log.SourceFileLineNr);
+                        log.CallSiteClass, "", "", 0, 0, null, "", log.CallSiteMethod, log.SourceFileName, (int)log.SourceFileLineNr);
                 messages.Add(m);
                 messagesHandler.AppendMessage(m, fileName);
             }
@@ -69,7 +69,7 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
             try
             {
 
-                var tcs = new TaskCompletionSource<IEnumerable<AnalogyLogMessage>>();
+                var tcs = new TaskCompletionSource<IEnumerable<IAnalogyLogMessage>>();
                 fileReceiver.NewMessage += FileReceiverNewMessage;
                 fileReceiver.NewMessages += FileReceiverNewMessages;
                 fileReceiver.OnDoneReadingFile += (s, e) =>
@@ -96,9 +96,7 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
         {
             m.Date = log.TimeStamp;
             m.Source = log.LoggerName;
-            if (m.AdditionalInformation == null)
-                m.AdditionalInformation = new Dictionary<string, string>();
-            m.AdditionalInformation.Add("Original level", log.LogLevel.ToString());
+            m.AddOrReplaceAdditionalProperty("Original level", log.LogLevel.ToString());
             foreach (KeyValuePair<string, string> prop in log.Properties)
             {
                 switch (prop.Key)
