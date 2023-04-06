@@ -1,4 +1,4 @@
-# Analogy.LogViewer.Log4jXml [![.NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4jXml/actions/workflows/dotnet-core-desktop.yml/badge.svg)](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4jXml/actions/workflows/dotnet-core-desktop.yml)
+# Analogy.LogViewer.Log4jXml [![.NET Core Desktop](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4jXml/actions/workflows/dotnet-core-desktop.yml/badge.svg)](https://github.com/Analogy-LogViewer/Analogy.LogViewer.Log4jXml/actions/workflows/dotnet-core-desktop.yml) [![Nuget](https://img.shields.io/nuget/v/Analogy.LogViewer.Log4jxml)](https://www.nuget.org/packages/Analogy.LogViewer.Log4jxml/)
 Analogy Parser for Log4jXml layouts
 
 This project is  on based on great project [Logazmic](https://github.com/ihtfw/Logazmic)
