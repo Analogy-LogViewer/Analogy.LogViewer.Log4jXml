@@ -1,5 +1,5 @@
-﻿using System;
-using Logazmic.Core.Log;
+﻿using Logazmic.Core.Log;
+using System;
 
 namespace Logazmic.Core.Readers.Parsers
 {
@@ -8,7 +8,7 @@ namespace Logazmic.Core.Readers.Parsers
         /// <summary>
         /// Parse LOG4JXml from string and return default LogMessage on exception
         /// </summary>
-      
+
         public static LogMessage TryParseLogEvent(this ILogParser logParser, string logEvent, string defaultLogger)
         {
             try
@@ -25,7 +25,7 @@ namespace Logazmic.Core.Readers.Parsers
                     Message = logEvent,
                     TimeStamp = DateTime.Now,
                     LogLevel = LogLevel.Info,
-                    ExceptionString = e.Message
+                    ExceptionString = e.Message,
                 };
             }
         }

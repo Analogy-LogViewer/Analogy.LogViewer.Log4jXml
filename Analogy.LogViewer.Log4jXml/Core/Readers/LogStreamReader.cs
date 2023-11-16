@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Logazmic.Core.Log;
+using Logazmic.Core.Readers.Parsers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Logazmic.Core.Log;
-using Logazmic.Core.Readers.Parsers;
 
 namespace Logazmic.Core.Readers
 {
@@ -38,7 +38,7 @@ namespace Logazmic.Core.Readers
             {
                 _tail = string.Empty;
             }
-            
+
             bytesRead = stream.Read(_buffer, 0, _buffer.Length);
             if (bytesRead == 0)
             {

@@ -1,13 +1,13 @@
-using System.Linq;
+using Analogy.LogViewer.Log4jXml.IAnalogy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Analogy.LogViewer.Log4jXml.IAnalogy;
 
 namespace Analogy.LogViewer.PowerToys.UnitTests
 {
     [TestClass]
-    public class UnitTests
+    public class Tests
     {
         [TestMethod]
         public async Task TestMethod1()
@@ -16,8 +16,6 @@ namespace Analogy.LogViewer.PowerToys.UnitTests
             //await parser.InitializeDataProviderAsync(null);
             //var results = await parser.Process("2020-10-03.txt", new CancellationToken(), new MessageHandlerForTesting());
             //Assert.IsTrue(results.Count()==60);
-
-
         }
     }
 }

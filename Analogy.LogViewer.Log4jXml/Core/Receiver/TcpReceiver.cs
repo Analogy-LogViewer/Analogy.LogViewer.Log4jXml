@@ -38,14 +38,14 @@ namespace Logazmic.Core.Receiver
             _server.Bind(endpoint);
             _server.Listen(100);
             _server.ReceiveBufferSize = BufferSize;
-            
+
             var args = new SocketAsyncEventArgs();
             args.Completed += AcceptAsyncCompleted;
 
             _server.AcceptAsync(args);
         }
 
-        void AcceptAsyncCompleted(object sender, SocketAsyncEventArgs e)
+       private void AcceptAsyncCompleted(object sender, SocketAsyncEventArgs e)
         {
             if (_server == null || e.SocketError != SocketError.Success)
             {
@@ -59,14 +59,14 @@ namespace Logazmic.Core.Receiver
             _server.AcceptAsync(e);
         }
 
-        void Start(object newSocket)
+        private void Start(object newSocket)
         {
             try
             {
                 var logStreamReader = LogReaderFactory.LogStreamReader(LogFormat);
                 logStreamReader.DefaultLogger = "TcpLogger";
 
-                using (var socket = (Socket) newSocket)
+                using (var socket = (Socket)newSocket)
                 {
                     using (var ns = new NetworkStream(socket, FileAccess.Read, false))
                     {
@@ -78,7 +78,8 @@ namespace Logazmic.Core.Receiver
                                 logMessage.LoggerName = string.Format(":{1}.{0}", logMessage.LoggerName, Port);
                                 OnNewMessage(logMessage);
                             }
-                        } while (_server != null && bytesRead > 0);
+                        }
+                        while (_server != null && bytesRead > 0);
                     }
                 }
             }

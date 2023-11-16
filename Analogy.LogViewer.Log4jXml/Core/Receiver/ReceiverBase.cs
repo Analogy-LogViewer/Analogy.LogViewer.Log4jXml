@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Logazmic.Core.Log;
+﻿using Logazmic.Core.Log;
 using Logazmic.Core.Readers;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace Logazmic.Core.Receiver
 {
@@ -64,7 +64,7 @@ namespace Logazmic.Core.Receiver
             NewMessages?.Invoke(this, e);
         }
 
-        protected void DoneReadingFile()=> OnDoneReadingFile?.Invoke(this,EventArgs.Empty);
+        protected void DoneReadingFile() => OnDoneReadingFile?.Invoke(this, EventArgs.Empty);
 
         #endregion
 

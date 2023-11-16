@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Logazmic.Core.Log;
+using System;
 using System.Collections.Generic;
 using System.Xml;
-using Logazmic.Core.Log;
 
 namespace Logazmic.Core.Readers.Parsers
 {

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Logazmic.Core.Readers;
+using System;
 using System.IO;
 using System.Linq;
-using Logazmic.Core.Readers;
 
 namespace Logazmic.Core.Receiver
 {
@@ -56,7 +56,7 @@ namespace Logazmic.Core.Receiver
             _filename = Path.GetFileName(FileToWatch);
             _fileWatcher = new FileSystemWatcher(path, _filename)
             {
-                NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size
+                NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size,
             };
             _fileWatcher.Changed += OnFileChanged;
             _fileWatcher.EnableRaisingEvents = true;
@@ -111,7 +111,8 @@ namespace Logazmic.Core.Receiver
 
                 // Update the last file length
                 _lastFileLength = _fileReader.BaseStream.Position;
-            } while (bytesRead > 0);
+            }
+            while (bytesRead > 0);
             DoneReadingFile();
         }
     }

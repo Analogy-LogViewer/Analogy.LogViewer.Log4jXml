@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Logazmic.Core.Log;
+using Logazmic.Core.Readers.Parsers;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using Logazmic.Core.Log;
-using Logazmic.Core.Readers.Parsers;
 
 namespace Logazmic.Core.Receiver
 {
@@ -44,7 +44,7 @@ namespace Logazmic.Core.Receiver
             {
                 _udpClient.JoinMulticastGroup(IPAddress.Parse(Address));
             }
-            Task.Factory.StartNew(Start);
+            _ = Task.Factory.StartNew(Start);
         }
 
         #endregion

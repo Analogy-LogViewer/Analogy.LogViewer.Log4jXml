@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Logazmic.Core.Filters
 {
@@ -14,7 +14,7 @@ namespace Logazmic.Core.Filters
             Children = new List<SourceFilter>();
             IsChecked = true;
         }
-        
+
         public bool IsChecked { get; set; }
 
         public string Name { get; set; }
@@ -90,13 +90,12 @@ namespace Logazmic.Core.Filters
             yield return this;
         }
 
-
         public SourceFilter Clone()
         {
             var parentClone = new SourceFilter
             {
                 Name = Name,
-                IsChecked = IsChecked
+                IsChecked = IsChecked,
             };
 
             foreach (var child in Children)

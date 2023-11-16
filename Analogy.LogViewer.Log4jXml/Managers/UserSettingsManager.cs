@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using Analogy.LogViewer.Template.Managers;
+﻿using Analogy.LogViewer.Template.Managers;
 using Newtonsoft.Json;
+using System;
+using System.IO;
 
 namespace Analogy.LogViewer.Log4jXml.Managers
 {
@@ -12,7 +12,6 @@ namespace Analogy.LogViewer.Log4jXml.Managers
     //    public static UserSettingsManager UserSettings { get; set; } = _instance.Value;
     //    public string AffirmationsFileSetting { get; private set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Analogy.LogViewer", "AnalogyLog4jXmlSettings.json");
     //    public Log4jXmlSettings Settings { get; set; }
-
 
     //    public UserSettingsManager()
     //    {
@@ -51,7 +50,6 @@ namespace Analogy.LogViewer.Log4jXml.Managers
     //        {
     //            LogManager.Instance.LogException("Error saving settings: " + e.Message, e, "Analogy Serilog Parser");
     //        }
-
 
     //    }
     //}

@@ -10,7 +10,7 @@
 
         public int StartIndex { get; }
         public int Length { get; }
-        
+
         public override string ToString()
         {
             return $"{StartIndex}:{Length}";

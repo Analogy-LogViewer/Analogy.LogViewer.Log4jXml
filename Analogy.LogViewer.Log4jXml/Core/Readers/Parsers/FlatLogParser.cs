@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Logazmic.Core.Log;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Logazmic.Core.Log;
 
 namespace Logazmic.Core.Readers.Parsers
 {
@@ -21,7 +21,7 @@ namespace Logazmic.Core.Readers.Parsers
                 ThreadName = "NA",
                 Message = logEvent,
                 TimeStamp = DateTime.Now,
-                LogLevel = LogLevel.Info
+                LogLevel = LogLevel.Info,
             };
         }
 
@@ -64,7 +64,7 @@ namespace Logazmic.Core.Readers.Parsers
                 ThreadName = "NA",
                 Message = logEvent.Substring(indexOfCloseBracket + 2),
                 TimeStamp = timestamp,
-                LogLevel = logLevel
+                LogLevel = logLevel,
             };
         }
 

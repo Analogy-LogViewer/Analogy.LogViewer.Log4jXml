@@ -17,11 +17,10 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
         public override Image? LargeImage { get; set; }
         public override string? OptionalTitle { get; set; } = "Log4jXml Parser";
         public override string FileOpenDialogFilters { get; set; } = "log4jxml|*.log4jxml;*.log4j;*.xml;*.xml.*|Flat|*.log";
-        public override IEnumerable<string> SupportFormats { get; set; } = new List<string> { "*.log4jxml", "*.log" , "*.xml"  , "*.xml.*" };
+        public override IEnumerable<string> SupportFormats { get; set; } = new List<string> { "*.log4jxml", "*.log", "*.xml", "*.xml.*" };
         public override string? InitialFolderFullPath { get; set; }
         public override Guid Id { get; set; } = new Guid("f17bf58c-01b7-49b7-9515-cf642fc021ac");
         private readonly ILogReaderFactory _logReaderFactory;
-
 
         public OfflineDataProvider()
         {
@@ -52,6 +51,7 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
                 messages.Add(m);
                 messagesHandler.AppendMessage(m, fileName);
             }
+            
             //supporting rolling files like *.xml.1, *.xml.2 ... *.xml.n
             string extension = Path.GetExtension(fileName);
             if (int.TryParse(extension.Substring(1), out _))
@@ -63,12 +63,11 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
             {
                 LogReaderFactory = _logReaderFactory,
                 FileToWatch = fileName,
-                LogFormat = _logReaderFactory.GetLogFormatByFileExtension(extension)
+                LogFormat = _logReaderFactory.GetLogFormatByFileExtension(extension),
             };
 
             try
             {
-
                 var tcs = new TaskCompletionSource<IEnumerable<IAnalogyLogMessage>>();
                 fileReceiver.NewMessage += FileReceiverNewMessage;
                 fileReceiver.NewMessages += FileReceiverNewMessages;
@@ -113,7 +112,6 @@ namespace Analogy.LogViewer.Log4jXml.IAnalogy
                 }
             }
         }
-
 
         private static AnalogyLogLevel GetLogLevel(Logazmic.Core.Log.LogLevel level)
         {

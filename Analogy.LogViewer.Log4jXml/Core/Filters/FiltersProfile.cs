@@ -1,15 +1,15 @@
+using Logazmic.Core.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Logazmic.Core.Log;
 
 namespace Logazmic.Core.Filters
 {
-    public class FiltersProfile 
+    public class FiltersProfile
     {
         private List<LogLevelFilter> _enabledLogLevels;
         private List<MessageFilter> _messageFilters;
-        private SourceFilter _sourceFilterRoot;
+        private SourceFilter? _sourceFilterRoot;
         private string _name;
 
         public string Name
@@ -29,7 +29,7 @@ namespace Logazmic.Core.Filters
 
         public List<LogLevelFilter> LogLevels
         {
-            get { return _enabledLogLevels ?? (_enabledLogLevels = AvailibleLogLevels().Select(l => new LogLevelFilter(l)).ToList()); }
+            get { return _enabledLogLevels ?? (_enabledLogLevels = AvailableLogLevels().Select(l => new LogLevelFilter(l)).ToList()); }
             set => _enabledLogLevels = value;
         }
 
@@ -43,15 +43,15 @@ namespace Logazmic.Core.Filters
 
         public SourceFilter SourceFilterRoot
         {
-            get => _sourceFilterRoot ?? (_sourceFilterRoot = new SourceFilter{ Name = "Root" });
+            get => _sourceFilterRoot ?? (_sourceFilterRoot = new SourceFilter { Name = "Root" });
             set => _sourceFilterRoot = value;
         }
 
-        public static IEnumerable<LogLevel> AvailibleLogLevels()
+        public static IEnumerable<LogLevel> AvailableLogLevels()
         {
             return Enum.GetValues(typeof(LogLevel)).OfType<LogLevel>().Where(l => l != LogLevel.None);
         }
-        
+
         public void Apply(FiltersProfile other)
         {
             if (other == null)
@@ -69,7 +69,7 @@ namespace Logazmic.Core.Filters
             {
                 MessageFilters.Add(new MessageFilter(messageFilter.Message)
                 {
-                    IsEnabled = messageFilter.IsEnabled
+                    IsEnabled = messageFilter.IsEnabled,
                 });
             }
 
@@ -81,6 +81,5 @@ namespace Logazmic.Core.Filters
 
             SourceFilterRoot = other.SourceFilterRoot.Clone();
         }
-
     }
 }

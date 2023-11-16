@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Logazmic.Core.Log;
+using System.Collections.Generic;
 using System.IO;
-using Logazmic.Core.Log;
 
 namespace Logazmic.Core.Readers
 {

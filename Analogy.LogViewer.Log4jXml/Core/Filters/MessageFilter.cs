@@ -7,7 +7,7 @@ namespace Logazmic.Core.Filters
             Message = message;
         }
 
-        public string Message { get;  }
+        public string Message { get; }
         public bool IsEnabled { get; set; } = true;
 
         public override string ToString()

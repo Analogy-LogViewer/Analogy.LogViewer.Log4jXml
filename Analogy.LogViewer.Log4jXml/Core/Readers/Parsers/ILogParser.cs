@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Logazmic.Core.Log;
+﻿using Logazmic.Core.Log;
+using System.Collections.Generic;
 
 namespace Logazmic.Core.Readers.Parsers
 {

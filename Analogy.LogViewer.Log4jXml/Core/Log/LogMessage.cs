@@ -18,20 +18,23 @@
         /// <summary>
         /// Logger Name.
         /// </summary>
-        public string LoggerName { get => _loggerName;
+        public string LoggerName
+        {
+            get => _loggerName;
             set
             {
                 _loggerName = value ?? string.Empty;
                 LoggerNames = _loggerName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 LastLoggerName = LoggerNames.LastOrDefault();
-            } }
+            }
+        }
 
         public IReadOnlyList<string> LoggerNames { get; private set; }
 
         public string LastLoggerName { get; private set; }
 
         public LogLevel LogLevel { get; set; }
-        
+
         /// <summary>
         /// Log Message.
         /// </summary>
@@ -64,7 +67,6 @@
         /// </summary>
         public Dictionary<string, string> Properties = new Dictionary<string, string>();
 
-
         /// <summary>
         /// An exception message to associate to this message.
         /// </summary>
@@ -74,7 +76,6 @@
         /// The CallSite Class
         /// </summary>
         public string CallSiteClass { get; set; }
-
 
         /// <summary>
         /// The CallSite Method in which the Log is made

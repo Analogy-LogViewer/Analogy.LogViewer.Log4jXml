@@ -17,6 +17,6 @@ namespace Logazmic.Core.Log
         Critical,
         Alert,
         Fatal,
-        Emergency
+        Emergency,
     }
 }
