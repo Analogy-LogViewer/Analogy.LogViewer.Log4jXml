@@ -53,7 +53,7 @@ namespace Logazmic.Core.Readers.Parsers
             }
 
             var timestampRaw = logEvent.Substring(0, indexOfOpenBracket);
-            if (!DateTime.TryParseExact(timestampRaw, "yyyy-MM-dd HH:mm:ss.fff zzz", CultureInfo.InvariantCulture, DateTimeStyles.None, out var timestamp))
+            if (!DateTimeOffset.TryParseExact(timestampRaw, "yyyy-MM-dd HH:mm:ss.fff zzz", CultureInfo.InvariantCulture, DateTimeStyles.None, out var timestamp))
             {
                 return null;
             }

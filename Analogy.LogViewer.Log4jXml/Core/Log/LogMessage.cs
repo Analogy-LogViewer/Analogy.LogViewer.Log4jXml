@@ -60,7 +60,7 @@
         /// <summary>
         /// Time Stamp.
         /// </summary>
-        public DateTime TimeStamp { get; set; }
+        public DateTimeOffset TimeStamp { get; set; }
 
         /// <summary>
         /// Properties collection.

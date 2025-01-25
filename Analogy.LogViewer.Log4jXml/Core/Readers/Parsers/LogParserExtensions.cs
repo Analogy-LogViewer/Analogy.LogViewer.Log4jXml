@@ -23,7 +23,7 @@ namespace Logazmic.Core.Readers.Parsers
                     LoggerName = defaultLogger,
                     ThreadName = "NA",
                     Message = logEvent,
-                    TimeStamp = DateTime.Now,
+                    TimeStamp = DateTimeOffset.Now,
                     LogLevel = LogLevel.Info,
                     ExceptionString = e.Message,
                 };

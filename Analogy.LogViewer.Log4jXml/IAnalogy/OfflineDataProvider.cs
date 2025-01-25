@@ -1,4 +1,5 @@
 ﻿using Analogy.Interfaces;
+using Analogy.Interfaces.DataTypes;
 using Logazmic.Core.Log;
 using Logazmic.Core.Readers;
 using Logazmic.Core.Receiver;

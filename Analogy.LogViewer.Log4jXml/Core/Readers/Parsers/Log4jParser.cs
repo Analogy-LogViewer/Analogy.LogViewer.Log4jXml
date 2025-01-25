@@ -60,7 +60,7 @@ namespace Logazmic.Core.Readers.Parsers
 
             if (long.TryParse(reader.GetAttribute("timestamp"), out var timeStamp))
             {
-                logMsg.TimeStamp = ToDateTime(timeStamp);
+                logMsg.TimeStamp = new DateTimeOffset(S1970.AddMilliseconds(timeStamp));
             }
 
             int eventDepth = reader.Depth;
@@ -135,11 +135,6 @@ namespace Logazmic.Core.Readers.Parsers
         protected override XmlParserContext GetXmlParserContext()
         {
             return _xmlContext;
-        }
-
-        public static DateTime ToDateTime(long timeStamp)
-        {
-            return S1970.AddMilliseconds(timeStamp);
         }
     }
 }
