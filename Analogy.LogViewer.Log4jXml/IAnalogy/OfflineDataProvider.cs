@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.LogViewer.Log4jXml.IAnalogy
 {
-    public class OfflineDataProvider : Analogy.LogViewer.Template.OfflineDataProvider
+    public class OfflineDataProvider : Analogy.LogViewer.Template.OfflineDataProviderWinForms
     {
         public override Image? SmallImage { get; set; }
         public override Image? LargeImage { get; set; }
