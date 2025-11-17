@@ -1,12 +1,13 @@
 ﻿using Analogy.Interfaces;
 using Analogy.LogViewer.Log4jXml.Properties;
+using Analogy.LogViewer.Template.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 
 namespace Analogy.LogViewer.Log4jXml.IAnalogy
 {
-    public class PrimaryFactory : Analogy.LogViewer.Template.PrimaryFactoryWinForms
+    public class PrimaryFactory : PrimaryFactoryWinForms
     {
         internal static Guid Id { get; } = new Guid("22c1be23-1198-41af-a67c-5b636ad619d6");
         public override Guid FactoryId { get; set; } = Id;

@@ -1,5 +1,6 @@
 ﻿using Analogy.Interfaces;
 using Analogy.Interfaces.DataTypes;
+using Analogy.LogViewer.Template.WinForms;
 using Logazmic.Core.Log;
 using Logazmic.Core.Readers;
 using Logazmic.Core.Receiver;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Analogy.LogViewer.Log4jXml.IAnalogy
 {
-    public class OfflineDataProvider : Analogy.LogViewer.Template.OfflineDataProviderWinForms
+    public class OfflineDataProvider : OfflineDataProviderWinForms
     {
         public override Image? SmallImage { get; set; }
         public override Image? LargeImage { get; set; }
