@@ -1,20 +1,13 @@
 version: 2
 updates:
-- package-ecosystem: nuget
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: MSTest.TestAdapter
-    versions:
-    - 2.2.3
-  - dependency-name: MSTest.TestFramework
-    versions:
-    - 2.2.3
-  - dependency-name: Analogy.LogViewer.Interfaces
-    versions:
-    - 2.10.0
-  - dependency-name: coverlet.collector
-    versions:
-    - 3.0.2
+  - package-ecosystem: nuget
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.0.11205.157 d18.0
+VisualStudioVersion = 18.0.11205.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.LogViewer.Log4jXml", "Analogy.LogViewer.Log4jXml\Analogy.LogViewer.Log4jXml.csproj", "{BF853F1B-62C3-4DAD-BA40-0D375BC3525A}"
 EndProject
@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B647F01D-3550-435C-80B3-1CDF09CB2821}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.github\dependabot.yml = .github\dependabot.yml
 		Directory.Build.props = Directory.Build.props
 		.github\workflows\dotnet-core-desktop.yml = .github\workflows\dotnet-core-desktop.yml
 		nuget.config = nuget.config
