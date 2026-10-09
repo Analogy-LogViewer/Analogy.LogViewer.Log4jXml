@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
@@ -24,13 +24,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="9.0.6" />
-		<PackageReference Include="Analogy.CommonUtilities" Version="9.0.6" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="9.0.6" />
-		<PackageReference Include="Analogy.LogViewer.Template.WinForms" Version="9.0.6" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="System.Resources.Extensions" Version="10.0.10" />
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.300" PrivateAssets="All" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" />
+		<PackageReference Include="Analogy.CommonUtilities" />
+		<PackageReference Include="Analogy.LogViewer.Template" />
+		<PackageReference Include="Analogy.LogViewer.Template.WinForms" />
+		<PackageReference Include="Newtonsoft.Json" />
+		<PackageReference Include="System.Resources.Extensions" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
 
 		
 	</ItemGroup>
